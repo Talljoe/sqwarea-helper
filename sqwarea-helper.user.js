@@ -7,13 +7,16 @@
 // ==/UserScript==
 
 (function () {
-  var Map, $;
+  var Map, Tools, $;
 
   function sqwarea_init_wait() {
-    if (typeof unsafeWindow.Map == 'undefined' || typeof unsafeWindow.$ == 'undefined') {
+    if (typeof unsafeWindow.Map == 'undefined'
+     || typeof unsafeWindow.Tools == 'undefined'
+     || typeof unsafeWindow.$ == 'undefined') {
       window.setTimeout(sqwarea_init_wait, 100);
     } else {
       Map = unsafeWindow.Map;
+      Tools = unsafeWindow.Tools;
       $ = unsafeWindow.$;
       sqwarea_helper_run();
     }
@@ -53,6 +56,14 @@
       }
       square.hover(Map.square._mouseOver, Map.square._mouseOut);
     }
+    // Add "Go to _C_oords" button
+    var gotobutton = $("<li class=\"GoToCoords\"><img src=\"../../Content/Images/troops.png\" /> Go to <u>C</u>oords</li>");
+    gotobutton.click(function() {
+      var destination = window.prompt ("Destination coords ?", "a,b");
+      destination = Tools.point.parse (destination);
+      Map.goToPoint (destination);
+    });
+    $("div.Actions ol").append (gotobutton);
   }
 
   try {
