@@ -18,7 +18,11 @@
       Map = unsafeWindow.Map;
       Tools = unsafeWindow.Tools;
       $ = unsafeWindow.$;
-      sqwarea_helper_run();
+      try {
+        sqwarea_helper_run();
+      } catch (e) {
+        alert("UserScript exception:\n" + e);
+      }
     }
   }
 
@@ -66,9 +70,5 @@
     $("div.Actions ol").append (gotobutton);
   }
 
-  try {
-    sqwarea_init_wait();
-  } catch (e) {
-    alert("UserScript exception:\n" + e);
-  }
+  sqwarea_init_wait();
 })();
