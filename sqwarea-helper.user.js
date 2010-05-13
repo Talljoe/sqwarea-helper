@@ -6,18 +6,19 @@
 // @include        http://www.sqwarea.com/Game
 // ==/UserScript==
 
-(function () {
+var elmt = document.createElement("script");
+elmt.type = "text/javascript";
+elmt.text = "(" + (function() {
   var Map, Tools, $;
-
   function sqwarea_init_wait() {
-    if (typeof unsafeWindow.Map == 'undefined'
-     || typeof unsafeWindow.Tools == 'undefined'
-     || typeof unsafeWindow.$ == 'undefined') {
+    if (typeof window.Map == 'undefined'
+     || typeof window.Tools == 'undefined'
+     || typeof window.$ == 'undefined') {
       window.setTimeout(sqwarea_init_wait, 100);
     } else {
-      Map = unsafeWindow.Map;
-      Tools = unsafeWindow.Tools;
-      $ = unsafeWindow.$;
+      Map = window.Map;
+      Tools = window.Tools;
+      $ = window.$;
       try {
         sqwarea_helper_run();
       } catch (e) {
@@ -70,5 +71,10 @@
     $("div.Actions ol").append (gotobutton);
   }
 
-  sqwarea_init_wait();
-})();
+  try {
+    sqwarea_init_wait();
+  } catch (e) {
+    alert("UserScript exception:\n" + e);
+  }
+}).toString() + ")();";
+document.body.appendChild(elmt);
