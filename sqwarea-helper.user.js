@@ -69,6 +69,12 @@ elmt.text = "(" + (function() {
       Map.goToPoint (destination);
     });
     $("div.Actions ol").append (gotobutton);
+    // Add "_B_ank Troops" button
+    var bankbutton = $("<li class=\"BankTroops\"><img src=\"../../Content/Images/troops.png\" /> <u>B</u>ank troops</li>");
+    bankbutton.click(function() {
+      Dialog.displayTroopsSender(Map._kingData, Logic.king.academyTroops);
+    });
+    $("div.Actions ol").append (bankbutton);
   }
 
   try {
