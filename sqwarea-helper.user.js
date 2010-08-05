@@ -106,6 +106,20 @@ elmt.text = "(" + (function () {
     }
 
     function sqwarea_helper_run() {
+        Logic.logs.updateLogs = function (logs) {
+
+            var ol = $('.Logs ol');
+            ol.find('li').trigger('mouseout');
+
+            //ol.html( '' );
+            for (var i = Math.max(0, logs.length - 200); i < logs.length; i++) {
+                var log = logs[i];
+                log.Date = Tools.date.parse(log.Date);
+                log.Position = Tools.point.parse(log.Position);
+                ol.prepend(Logic.logs.log.create(log));
+            }
+        }
+
         Dialog.displayTroopsSender = displayTroopsSender;
         Map.square._base_initPoint = Map.square._initPoint;
         Map.square._base_mouseOver = Map.square._mouseOver;
