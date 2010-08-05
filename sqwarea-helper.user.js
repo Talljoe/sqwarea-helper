@@ -123,8 +123,14 @@ elmt.text = "(" + (function () {
             square.unbind('mouseenter mouseleave');
             Map.square._mouseOver = function (e) {
                 Map.square._base_mouseOver.apply(square, arguments);
+                var xOfs = Map._kingData.x - x;
+                var yOfs = Map._kingData.y - y;
+                var distance = Math.sqrt((xOfs * xOfs) + (yOfs * yOfs));
                 var info = Map._info;
                 info.append('<dt>Coords:</dt><dd>(' + x + ', ' + y + ')</dd>');
+                if (distance > 0) {
+                    info.append('<dt>Travel Time:</dt><dd>' + Tools.date.toHumanDelay(distance * 10 * 60 * 1000) + '</dd>');
+                }
                 var offset = {
                     left: (square.position().left + Map.size.width + 10),
                     top: (square.position().top + Map.size.height + 10)
