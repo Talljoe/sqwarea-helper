@@ -1,0 +1,38 @@
+h1. Sqwarea script helper
+
+This project includes a Greasemonkey script for Firefox or Chrome to help with managing your "Sqwarea":http://sqwarea.com/ account.
+
+h1. Features
+
+h2. New functionality
+* See coordinates of squares and go directly to any coordinate. (In tooltip or via Ctrl-Click of square.)
+* See travel time for squares so you know when your attack will land (and to avoid sending attacks out of order).
+* Easily bank troops on the king square.
+* Default to 10 troops for reinforcement to keep from accidentally sending half your troops to a square.
+
+h2. Bug fixes
+* Only lists latest 200 entries in events tab to address performance issues.
+* Fixes blank textboxes when using keyboard shortcuts.
+* Sending to a neutral sqaure defaults to 11 troops instead of 1.
+* Fixes disappearing dialog boxes on escape.
+
+h1. Installation
+
+h2. Firefox
+
+# Install "Greasemonkey":https://addons.mozilla.org/en-US/firefox/addon/748/
+# Download the latest version of the "script":http://github.com/Talljoe/sqwarea-helper/raw/master/sqwarea-helper.user.js
+# Install when prompted
+
+h2. Chrome
+
+# Download the latest version of the "script":http://github.com/Talljoe/sqwarea-helper/raw/master/sqwarea-helper.user.js
+# Install when prompted
+
+h1. Credits
+
+Original version of the script by "Guillaume 'iXce' Seguin":http://guillaume.segu.in/.
+
+h1. License
+
+Licensed under GPLv2 because it includes code from Sqwarea.
