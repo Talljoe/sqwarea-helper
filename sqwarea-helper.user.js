@@ -157,6 +157,53 @@ elmt.text = "(" + (function () {
             Dialog.displayTroopsSender(Map._kingData, Logic.king.academyTroops);
         });
         $("div.Actions ol").append(bankbutton);
+
+        $(document).unbind('keydown');
+        $(document).keyup(function (e) {
+            if (e.keyCode == $.ui.keyCode.ESCAPE) {
+                $('.Pushed').click();
+                $('.Dialogs .Dialog').each(function () {
+                    Dialog.close(this);
+                });
+            }
+            if (e.keyCode == $.ui.keyCode.ENTER) {
+                $('.Dialogs .Dialog input[type=button]:first').each(function () {
+                    if ($(this).is('[disabled]')) {
+                        return;
+                    }
+                    $(this).click();
+                });
+                return;
+            }
+            if ($('input:focus').length) {
+                return;
+            }
+            if (e.keyCode == $.ui.keyCode.UP) {
+                Map._ground.css('top', parseInt(Map._ground.css('top')) + 10);
+                Map.refreshPeriodically();
+                return;
+            }
+            if (e.keyCode == $.ui.keyCode.DOWN) {
+                Map._ground.css('top', parseInt(Map._ground.css('top')) - 10);
+                Map.refreshPeriodically();
+                return;
+            }
+            if (e.keyCode == $.ui.keyCode.LEFT) {
+                Map._ground.css('left', parseInt(Map._ground.css('left')) + 10);
+                Map.refreshPeriodically();
+                return;
+            }
+            if (e.keyCode == $.ui.keyCode.RIGHT) {
+                Map._ground.css('left', parseInt(Map._ground.css('left')) - 10);
+                Map.refreshPeriodically();
+                return;
+            }
+            $('u').each(function () {
+                if ($(this).html().charCodeAt(0) == e.keyCode) {
+                    $(this).click();
+                }
+            });
+        });
     }
 
     $(sqwarea_helper_run);
