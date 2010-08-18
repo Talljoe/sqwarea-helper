@@ -171,10 +171,25 @@ elmt.text = "(" + (function () {
             }
         });
         $("div.Actions ol").append(gotobutton);
+
         // Add "_B_ank Troops" button
         var bankbutton = $("<li class=\"BankTroops\"><img src=\"../../Content/Images/troops.png\" /> <u>B</u>ank troops</li>");
         bankbutton.click(function () {
             Dialog.displayTroopsSender(Map._kingData, Logic.king.academyTroops);
+        });
+        $("div.Actions ol").append(bankbutton);
+
+        // Add "_D_efault Attack" button
+        var bankbutton = $("<li class=\"DefaultAttack\"><img src=\"../../Content/Images/troops.png\" /> <u>D</u>efault attack</li>");
+        bankbutton.click(function () {
+            var inputSquareNumber = window.prompt("Troops on square", Logic.globals.initialSquareTroopsNumber);
+            if(inputSquareNumber != null) {
+              var inputMinimumTroops = window.prompt("Troops left over", Logic.globals.minimumTroopsToClaimSquare);
+              if(inputMinimumTroops != null) {
+                Logic.globals.minimumTroopsToClaimSquare = parseInt(inputMinimumTroops);
+                Logic.globals.initialSquareTroopsNumber = parseInt(inputSquareNumber);
+              }
+            }
         });
         $("div.Actions ol").append(bankbutton);
 
