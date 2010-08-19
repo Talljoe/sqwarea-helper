@@ -180,8 +180,8 @@ elmt.text = "(" + (function () {
         $("div.Actions ol").append(bankbutton);
 
         // Add "_D_efault Attack" button
-        var bankbutton = $("<li class=\"DefaultAttack\"><img src=\"../../Content/Images/troops.png\" /> <u>D</u>efault attack</li>");
-        bankbutton.click(function () {
+        var defaultattackbutton = $("<li class=\"DefaultAttack\"><img src=\"../../Content/Images/troops.png\" /> <u>D</u>efault attack</li>");
+        defaultattackbutton.click(function () {
             var inputSquareNumber = window.prompt("Troops on square", Logic.globals.initialSquareTroopsNumber);
             if(inputSquareNumber != null) {
               var inputMinimumTroops = window.prompt("Troops left over", Logic.globals.minimumTroopsToClaimSquare);
@@ -191,7 +191,7 @@ elmt.text = "(" + (function () {
               }
             }
         });
-        $("div.Actions ol").append(bankbutton);
+        $("div.Actions ol").append(defaultattackbutton);
 
         $(document).unbind('keydown');
         $(document).keyup(function (e) {
