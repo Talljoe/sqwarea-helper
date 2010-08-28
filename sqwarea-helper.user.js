@@ -9,8 +9,10 @@
 var elmt = document.createElement("script");
 elmt.type = "text/javascript";
 elmt.text = "(" + (function () {
+    Logic.globals.defaultReinforcement = 10;
+
     function displayTroopsSender(data, troops) {
-        if (troops == null) troops = 10;
+        if (troops == null) troops = Logic.globals.defaultReinforcement;
         if (data.kingId != Logic.king.id) {
             troops = data.troops == null ? (Logic.globals.initialSquareTroopsNumber + Logic.globals.minimumTroopsToClaimSquare)
                                          : (data.troops + Logic.globals.minimumTroopsToClaimSquare);
@@ -192,6 +194,16 @@ elmt.text = "(" + (function () {
             }
         });
         $("div.Actions ol").append(defaultattackbutton);
+
+        // Add "Default Reinforcement" button
+        var defaultreinforcementbutton = $("<li class=\"DefaultReinforcement\"><img src=\"../../Content/Images/troops.png\" /> Default <u>R</u>einforcement</li>");
+        defaultreinforcementbutton.click(function () {
+            var inputReinforcement = window.prompt("Number of troops to reinforce with", Logic.globals.defaultReinforcement);
+            if(inputReinforcement != null) {
+              Logic.globals.defaultReinforcement = parseInt(inputReinforcement);
+            }
+        });
+        $("div.Actions ol").append(defaultreinforcementbutton);
 
         $(document).unbind('keydown');
         $(document).keyup(function (e) {
