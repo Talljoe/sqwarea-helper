@@ -8,8 +8,8 @@ h2. New functionality
 * See coordinates of squares and go directly to any coordinate. (In tooltip or via Ctrl-Click of square.)
 * See travel time for squares so you know when your attack will land (and to avoid sending attacks out of order).
 * Easily bank troops on the king square.
-* Default to 10 troops for reinforcement to keep from accidentally sending half your troops to a square.
-* Override the default troop counts for attacks and reinforcements.
+* Override the default troop counts for reinforcement to keep from accidentally sending half your troops to a square.
+* Override the default troop counts for attacks.
 
 h2. Bug fixes
 * Only lists latest 200 entries in events tab to address performance issues.
